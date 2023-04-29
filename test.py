@@ -135,8 +135,7 @@ def core():
                 data = "闭眼了"
             else:
                 data = "睁眼了"
-            # cv2.imshow('MediaPipe Face Mesh', cv2.flip(image, 1))
-            cv2.imwrite('image.png', cv2.flip(image, 1))
+            # cv2.imwrite('image.png', cv2.flip(image, 1))
             if cv2.waitKey(5) & 0xFF == 27:
                 break
             # time.sleep(0.1)
