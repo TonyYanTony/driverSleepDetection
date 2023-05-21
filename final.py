@@ -28,7 +28,7 @@ class App:
 
 
         # create label for eye detection
-        self.prelabel = tk.Label(window, text="状态:", font=('Arial', 25))
+        self.prelabel = tk.Label(window, text="状态:", font=('Arial', 17))
         self.prelabel.place(rely=0.5, relx=0.78, anchor=tk.E)
 
 
@@ -120,13 +120,13 @@ class App:
 
                     # update label for eye detection
                     if leftEar > 0.2 and rightEar > 0.2:
-                        self.label = tk.Label(self.window, text="睁两只眼", font=('Arial', 25), fg="#f00")
+                        self.label = tk.Label(self.window, text="睁两只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
                     elif leftEar > 0.2 or rightEar > 0.2:
-                        self.label = tk.Label(self.window, text="闭一只眼", font=('Arial', 25), fg="#f00")
+                        self.label = tk.Label(self.window, text="闭一只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
                     else:
-                        self.label = tk.Label(self.window, text="闭两只眼", font=('Arial', 25), fg="#f00")
+                        self.label = tk.Label(self.window, text="闭两只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
         except:
             # 将图像转换为 RGB 格式
@@ -141,7 +141,7 @@ class App:
             # 在画布上显示图像
             self.canvas.create_image(0, 0, image=self.photo, anchor=tk.NW)
 
-            self.label = tk.Label(self.window, text="图中无人", font=('Arial', 25), fg="#f00")
+            self.label = tk.Label(self.window, text="图中无人", font=('Arial', 17), fg="#f00")
             self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
 
         # 每隔一段时间更新一次画面
