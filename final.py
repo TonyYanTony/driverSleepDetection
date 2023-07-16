@@ -3,6 +3,11 @@ import cv2
 import PIL.Image, PIL.ImageTk
 import mediapipe as mp
 import math
+import time
+from playsound import playsound
+
+timer = time.time()
+firstClose = True
 
 
 class App:
@@ -26,11 +31,9 @@ class App:
         self.canvas = tk.Canvas(window, width=640, height=480)
         self.canvas.place(rely=0.5, relx=0.02, anchor=tk.W)
 
-
         # create label for eye detection
         self.prelabel = tk.Label(window, text="状态:", font=('Arial', 17))
         self.prelabel.place(rely=0.5, relx=0.78, anchor=tk.E)
-
 
         # 开始显示摄像头数据
         self.delay = 15
@@ -39,6 +42,8 @@ class App:
         self.window.mainloop()
 
     def update(self):
+        global firstClose
+        global timer
         success, image = self.cap.read()
         try:
             mp_drawing = mp.solutions.drawing_utils
@@ -122,12 +127,21 @@ class App:
                     if leftEar > 0.2 and rightEar > 0.2:
                         self.label = tk.Label(self.window, text="睁两只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
+                        firstClose = True;
                     elif leftEar > 0.2 or rightEar > 0.2:
                         self.label = tk.Label(self.window, text="闭一只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
+                        firstClose = True;
                     else:
                         self.label = tk.Label(self.window, text="闭两只眼", font=('Arial', 17), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
+
+                        if firstClose == True:
+                            firstClose = False
+                            timer = time.time()
+                        else:
+                            if time.time() - timer > 2:
+                                playsound('alarm.mp3')
         except:
             # 将图像转换为 RGB 格式
             frame = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
