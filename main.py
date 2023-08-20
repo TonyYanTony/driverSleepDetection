@@ -29,7 +29,7 @@ class App:
         self.titleLb = tk.Label(self.titleFr, image=self.titlenewimg)
         self.titleLb.pack()
         # 创建画布，用于显示图像
-        self.canvas = tk.Canvas(window, width=320, height=320)
+        self.canvas = tk.Canvas(window, width=520, height=520)
         self.canvas.place(rely=0.5, relx=0.02, anchor=tk.W)
 
         # create label for eye detection
