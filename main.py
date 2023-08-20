@@ -14,22 +14,22 @@ firstClose = True
 class App:
     def __init__(self, window, window_title):
         self.window = window
-        self.window.geometry("1000x800")
+        self.window.geometry("480x320")
         self.window.title(window_title)
 
         # 初始化摄像头
         self.cap = cv2.VideoCapture(0)
 
         # create label for title
-        self.titleFr = tk.Frame(window, width=1000, height=100)
+        self.titleFr = tk.Frame(window, width=480, height=48)
         self.titleimg = PIL.Image.open("title.jpg")
-        self.titlereimg = self.titleimg.resize((1000, 100))
+        self.titlereimg = self.titleimg.resize((480, 48))
         self.titlenewimg = PIL.ImageTk.PhotoImage(self.titlereimg)
         self.titleFr.pack(fill=tk.BOTH, expand=True)
         self.titleLb = tk.Label(self.titleFr, image=self.titlenewimg)
         self.titleLb.pack()
         # 创建画布，用于显示图像
-        self.canvas = tk.Canvas(window, width=640, height=480)
+        self.canvas = tk.Canvas(window, width=320, height=320)
         self.canvas.place(rely=0.5, relx=0.02, anchor=tk.W)
 
         # create label for eye detection
@@ -180,4 +180,4 @@ class App:
 
 
 # 创建窗口
-App(tk.Tk(), "Tkinter and OpenCV")
+App(tk.Tk(), "司机疲劳驾驶管理系统v1.0")
