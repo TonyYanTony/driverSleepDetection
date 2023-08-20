@@ -14,7 +14,7 @@ firstClose = True
 class App:
     def __init__(self, window, window_title):
         self.window = window
-        self.window.geometry("480x320")
+        self.window.geometry("1260x640")
         self.window.title(window_title)
 
         # 初始化摄像头
