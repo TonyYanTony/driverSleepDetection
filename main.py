@@ -14,27 +14,27 @@ firstClose = True
 class App:
     def __init__(self, window, window_title):
         self.window = window
-        self.window.geometry("1260x640")
+        self.window.geometry("1280x660")
         self.window.title(window_title)
 
         # 初始化摄像头
         self.cap = cv2.VideoCapture(0)
 
         # create label for title
-        self.titleFr = tk.Frame(window, width=1260, height=126)
+        self.titleFr = tk.Frame(window, width=1280, height=128)
         self.titleimg = PIL.Image.open("title.jpg")
-        self.titlereimg = self.titleimg.resize((1260, 126))
+        self.titlereimg = self.titleimg.resize((1280, 128))
         self.titlenewimg = PIL.ImageTk.PhotoImage(self.titlereimg)
         self.titleFr.pack(fill=tk.BOTH, expand=True)
         self.titleLb = tk.Label(self.titleFr, image=self.titlenewimg)
         self.titleLb.pack()
         # 创建画布，用于显示图像
         self.canvas = tk.Canvas(window, width=520, height=520)
-        self.canvas.place(rely=0.5, relx=0.02, anchor=tk.W)
+        self.canvas.place(rely=0.625, relx=0.02, anchor=tk.W)
 
         # create label for eye detection
-        self.prelabel = tk.Label(window, text="状态:", font=('Arial', 17))
-        self.prelabel.place(rely=0.5, relx=0.78, anchor=tk.E)
+        self.prelabel = tk.Label(window, text="状态:", font=('Arial', 50))
+        self.prelabel.place(rely=0.5, relx=0.75, anchor=tk.E)
 
         # 开始显示摄像头数据
         self.delay = 15
@@ -126,15 +126,15 @@ class App:
 
                     # update label for eye detection
                     if leftEar > 0.2 and rightEar > 0.2:
-                        self.label = tk.Label(self.window, text="睁两只眼", font=('Arial', 17), fg="#f00")
+                        self.label = tk.Label(self.window, text="睁两只眼", font=('Arial', 50), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
                         firstClose = True;
                     elif leftEar > 0.2 or rightEar > 0.2:
-                        self.label = tk.Label(self.window, text="闭一只眼", font=('Arial', 17), fg="#f00")
+                        self.label = tk.Label(self.window, text="闭一只眼", font=('Arial', 50), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
                         firstClose = True;
                     else:
-                        self.label = tk.Label(self.window, text="闭两只眼", font=('Arial', 17), fg="#f00")
+                        self.label = tk.Label(self.window, text="闭两只眼", font=('Arial', 50), fg="#f00")
                         self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
 
                         if firstClose == True:
@@ -157,7 +157,7 @@ class App:
             # 在画布上显示图像
             self.canvas.create_image(0, 0, image=self.photo, anchor=tk.NW)
 
-            self.label = tk.Label(self.window, text="图中无人", font=('Arial', 17), fg="#f00")
+            self.label = tk.Label(self.window, text="图中无人", font=('Arial', 50), fg="#f00")
             self.label.place(rely=0.5, relx=0.97, anchor=tk.E)
 
         # 每隔一段时间更新一次画面
