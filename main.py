@@ -21,9 +21,9 @@ class App:
         self.cap = cv2.VideoCapture(0)
 
         # create label for title
-        self.titleFr = tk.Frame(window, width=480, height=48)
+        self.titleFr = tk.Frame(window, width=1260, height=126)
         self.titleimg = PIL.Image.open("title.jpg")
-        self.titlereimg = self.titleimg.resize((480, 48))
+        self.titlereimg = self.titleimg.resize((1260, 126))
         self.titlenewimg = PIL.ImageTk.PhotoImage(self.titlereimg)
         self.titleFr.pack(fill=tk.BOTH, expand=True)
         self.titleLb = tk.Label(self.titleFr, image=self.titlenewimg)
